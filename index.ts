@@ -20,9 +20,9 @@ function fileToGenerativePart(path, mimeType) {
 }
 
 async function run() {
-  const prompt = "Convert the following image to pixel style";
+  const prompt = "请把莱昂纳多的脸替换为特朗普的脸";
 
-  const imageParts = [fileToGenerativePart("test.png", "image/png")];
+  const imageParts = [fileToGenerativePart("test2.jpg", "image/png")];
 
   const generatedContent = await genAI.models.generateContent({
     model: "gemini-2.0-flash-exp",
@@ -32,13 +32,16 @@ async function run() {
     },
   });
 
+  let imageSeq = 1;
+
   for (const candidate of generatedContent.candidates) {
     for (const part of candidate.content.parts) {
       if (part.inlineData) {
         fs.writeFileSync(
-          "output." + part.inlineData.mimeType.split("/")[1],
+          "image" + imageSeq + "." + part.inlineData.mimeType.split("/")[1],
           Buffer.from(part.inlineData.data, "base64")
         );
+        imageSeq++;
       } else if (part.text) {
         console.log(part.text);
       }

@@ -7,8 +7,14 @@ This is a simple demo of the [Gemini API](https://ai.google.dev/gemini-api/docs/
 - Edit the promot in `index.ts`
 - Run `yarn && yarn test`
 
-example: `Convert the following image to pixel style`
+example1: `Convert the following image to pixel style`
 
 ![input](./test.png)
 
 ![output](./output.png)
+
+example2: `Swap the face of leonardo dicaprio to Trump`
+
+![input](./test2.jpg)
+
+![output](./image1.png)
